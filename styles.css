@@ -63,7 +63,34 @@
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Palette Overrides */
+/* Palette Overrides (The 3 Locked Moodboard Themes + Classics) */
+body.theme-traveler {
+  --bg-cover: #5C3A21;
+  --bg: #FFFDF7;
+  --ink: #1A2436;
+  --ink-secondary: #7A5C43;
+  --rule: rgba(26, 36, 54, 0.12);
+  --rule-accent: rgba(184, 75, 41, 0.28);
+  --accent-tape: #829B85;
+}
+body.theme-spiral {
+  --bg-cover: #3A3A3C;
+  --bg: #FAF9F5;
+  --ink: #232326;
+  --ink-secondary: #6B6B70;
+  --rule: rgba(35, 35, 38, 0.10);
+  --rule-accent: rgba(107, 107, 112, 0.25);
+  --accent-tape: #D4A373;
+}
+body.theme-pastel {
+  --bg-cover: #8E9AAF;
+  --bg: #E4EAEE;
+  --ink: #2B3A42;
+  --ink-secondary: #6C7D8A;
+  --rule: rgba(43, 58, 66, 0.08);
+  --rule-accent: rgba(108, 125, 138, 0.22);
+  --accent-tape: #C9ADA7;
+}
 body.theme-paper {
   --bg: var(--bg-paper);
   --ink: var(--ink-paper);
@@ -75,18 +102,6 @@ body.theme-ink {
   --ink: var(--ink-ink);
   --rule: var(--rule-ink);
   --rule-accent: var(--rule-accent-ink);
-}
-body.theme-blossom {
-  --bg: var(--bg-blossom);
-  --ink: var(--ink-blossom);
-  --rule: var(--rule-blossom);
-  --rule-accent: var(--rule-accent-blossom);
-}
-body.theme-forest {
-  --bg: var(--bg-forest);
-  --ink: var(--ink-forest);
-  --rule: var(--rule-forest);
-  --rule-accent: var(--rule-accent-forest);
 }
 body.theme-midnight {
   --bg: var(--bg-midnight);
@@ -1015,34 +1030,154 @@ body.mode-full .prop-eucalyptus {
   overflow: hidden;
 }
 
-/* Real Leather Spine on Left Edge */
-.leather-spine-strip {
+/* ==========================================================================
+   DYNAMIC TACTILE BINDING SPINES (Derived from Moodboard: Leather, Spiral, Pastel)
+   ========================================================================== */
+.tactile-spine-strip {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 22px;
-  background: linear-gradient(90deg, #422919 0%, #5e3a24 45%, #7a4f32 75%, #3d2314 100%);
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.35);
+  width: 24px;
   z-index: 30;
+  overflow: visible;
+}
+
+/* Generic spine variant hiding/showing */
+.spine-variant {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* 1. Traveler's Saddle Leather Spine */
+body.theme-traveler .spine-variant-leather,
+body.theme-paper .spine-variant-leather,
+body.theme-midnight .spine-variant-leather,
+.spine-variant-leather.active {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 16px 0;
+  background: linear-gradient(90deg, #3d2212 0%, #5c3a21 45%, #7a4e2f 75%, #381f10 100%);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
 }
 .spine-stitching {
   width: 2px;
-  height: 92%;
-  border-right: 2px dashed rgba(220, 185, 140, 0.4);
+  height: 90%;
+  border-right: 2px dashed rgba(220, 185, 140, 0.45);
+}
+.spine-elastic-cord {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 100%;
+  background: #1c1511;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.5);
+}
+.elastic-brass-rivet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e5c378 40%, #8f6f2b 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .spine-emboss {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 8px;
-  letter-spacing: 2px;
-  color: rgba(220, 185, 140, 0.55);
-  font-weight: 600;
+  letter-spacing: 2.2px;
+  color: rgba(229, 195, 120, 0.65);
+  font-weight: 700;
+}
+
+/* 2. Silver Wire-O Spiral Spine */
+body.theme-spiral .spine-variant-leather,
+body.theme-spiral .spine-variant-pastel {
+  display: none !important;
+}
+body.theme-spiral .spine-variant-spiral {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  background: linear-gradient(90deg, #2a2a2c 0%, #3a3a3c 70%, #202022 100%);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.35);
+}
+.spiral-coils {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 94%;
+  width: 100%;
+  align-items: center;
+}
+.spiral-loop {
+  position: relative;
+  width: 22px;
+  height: 14px;
+}
+.spiral-loop .hole {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #191410;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+.spiral-loop .wire {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: 20px;
+  height: 13px;
+  border-radius: 8px;
+  border-top: 3.5px solid #dcdde1;
+  border-left: 3.5px solid #b2bec3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* 3. Muted Pastel Hardbound Cloth with Satin Ribbon Bookmark */
+body.theme-pastel .spine-variant-leather,
+body.theme-pastel .spine-variant-spiral {
+  display: none !important;
+}
+body.theme-pastel .spine-variant-pastel {
+  display: block !important;
+  background: linear-gradient(90deg, #6c778a 0%, #8e9aaf 55%, #606b7d 100%);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.25);
+}
+.spine-linen-grain {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 4px);
+}
+.satin-ribbon-tail {
+  position: absolute;
+  bottom: -32px;
+  left: 6px;
+  width: 12px;
+  height: 44px;
+  background: linear-gradient(180deg, #c9ada7 0%, #a88b85 100%);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+  z-index: 50;
+  animation: swayRibbon 4s infinite ease-in-out;
+}
+@keyframes swayRibbon {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
 }
 
 /* Canvas Topbar */
@@ -1474,6 +1609,151 @@ body.layout-plain .paper-sheet {
   font-size: 9.5px;
   color: #8f6e4a;
   text-decoration: underline;
+}
+
+/* 3. Vintage Café Ticket Stub & Ephemera */
+.ephemera-ticket-stub {
+  position: relative;
+  background: #f7eedf;
+  border: 1px dashed #b89870;
+  border-left: 2px dashed #926f49;
+  border-radius: 4px;
+  padding: 10px 14px;
+  width: 220px;
+  margin: 6px auto;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.ticket-washi-tape {
+  position: absolute;
+  top: -8px;
+  right: 18px;
+  width: 50px;
+  height: 14px;
+  background: rgba(212, 163, 115, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.ticket-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ticket-header {
+  font-family: var(--font-ui);
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #61462b;
+}
+.ticket-meta {
+  font-family: monospace;
+  font-size: 9px;
+  opacity: 0.75;
+}
+.ticket-stamp {
+  align-self: flex-end;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #b83d2d;
+  border: 1px solid #b83d2d;
+  padding: 1px 4px;
+  border-radius: 2px;
+  transform: rotate(-4deg);
+  margin-top: 4px;
+}
+
+/* 4. Dedicated Photobook 2x2 Grid (Mode 3) */
+.photobook-grid-page {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 12px auto;
+  width: 100%;
+  max-width: 260px;
+}
+.mini-polaroid-frame {
+  background: #fff;
+  padding: 5px 5px 12px;
+  border-radius: 2px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+  border: 1px solid #ded6c8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mini-polaroid-frame img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+}
+.mini-polaroid-chin {
+  font-family: var(--font-handwriting);
+  font-size: 11px;
+  margin-top: 4px;
+  color: #333;
+}
+
+/* --------------------------------------------------------------------------
+   SCRAPBOOK & PICTURE LAYOUT ENGINE MODES (Modes 1 to 4)
+   -------------------------------------------------------------------------- */
+/* Mode 1: Inline with Text */
+body.layout-inline .polaroid-frame {
+  float: left;
+  width: 130px;
+  margin: 0 14px 10px 0;
+  padding: 6px 6px 16px;
+}
+body.layout-inline .polaroid-photo-box {
+  height: 110px;
+}
+body.layout-inline .ephemera-ticket-stub,
+body.layout-inline .photobook-grid-page {
+  display: none !important;
+}
+
+/* Mode 2: Collage & Ephemera Canvas (Default) */
+body.layout-ephemera .photobook-grid-page {
+  display: none;
+}
+
+/* Mode 3: Dedicated Photobook Grid */
+body.layout-photobook .photobook-grid-page {
+  display: grid;
+}
+body.layout-photobook .polaroid-frame,
+body.layout-photobook .ephemera-ticket-stub,
+body.layout-photobook .torn-craft-scrap {
+  display: none !important;
+}
+
+/* Mode 4: Something Directly from the Page */
+body.layout-scrap .polaroid-frame,
+body.layout-scrap .ephemera-ticket-stub,
+body.layout-scrap .photobook-grid-page {
+  display: none !important;
+}
+body.layout-scrap .torn-craft-scrap {
+  transform: rotate(0deg) scale(1.08) !important;
+  margin: 20px auto;
+}
+
+/* Simulated Spiral-Tear Fringe */
+.spiral-tear-fringe {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+.fringe-tooth {
+  width: 14px;
+  height: 9px;
+  background: var(--craft-paper);
+  border-radius: 0 0 6px 6px;
+  border: 1px solid #dcd1be;
+  border-top: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /* Page Tags Strip */

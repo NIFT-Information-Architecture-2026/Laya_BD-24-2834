@@ -17,8 +17,9 @@
     passcode: '2428', // BD-24-2834
     passcodeHint: 'NIFT Student Roll Number (BD-24-2834)',
     autoLock: true,
-    theme: 'theme-paper',
+    theme: 'theme-traveler',
     paperLayout: 'layout-lined',
+    layoutMode: 'layout-ephemera',
     speechLang: 'ml-IN'
   };
 
@@ -248,6 +249,7 @@
     btnTriggerTear: document.getElementById('btnTriggerTear'),
     selectPaperStyle: document.getElementById('selectPaperStyle'),
     selectTheme: document.getElementById('selectTheme'),
+    selectLayoutMode: document.getElementById('selectLayoutMode'),
     selectSpeechLang: document.getElementById('selectSpeechLang'),
     btnPrevPage: document.getElementById('btnPrevPage'),
     btnNextPage: document.getElementById('btnNextPage'),
@@ -337,12 +339,14 @@
      INITIALIZATION & BOOTSTRAP
      ========================================================================== */
   function init() {
-    applyTheme(state.config.theme);
-    applyPaperLayout(state.config.paperLayout);
+    applyTheme(state.config.theme || 'theme-traveler');
+    applyPaperLayout(state.config.paperLayout || 'layout-lined');
+    applyLayoutMode(state.config.layoutMode || 'layout-ephemera');
     
-    DOM.selectTheme.value = state.config.theme;
-    DOM.selectPaperStyle.value = state.config.paperLayout;
-    DOM.selectSpeechLang.value = state.config.speechLang;
+    if (DOM.selectTheme) DOM.selectTheme.value = state.config.theme || 'theme-traveler';
+    if (DOM.selectLayoutMode) DOM.selectLayoutMode.value = state.config.layoutMode || 'layout-ephemera';
+    if (DOM.selectPaperStyle) DOM.selectPaperStyle.value = state.config.paperLayout;
+    if (DOM.selectSpeechLang) DOM.selectSpeechLang.value = state.config.speechLang;
     DOM.settingHintDisplay.textContent = `"${state.config.passcodeHint}"`;
     DOM.chkAutoLock.checked = state.config.autoLock;
 
@@ -984,13 +988,40 @@
   }
 
   /* ==========================================================================
-     THEME & LAYOUT APPLY
+     THEME & LAYOUT APPLY (The 3 Locked Moodboard Themes + Layout Modes)
      ========================================================================== */
   function applyTheme(themeName) {
-    DOM.body.classList.remove('theme-paper', 'theme-ink', 'theme-blossom', 'theme-forest', 'theme-midnight');
+    DOM.body.classList.remove(
+      'theme-traveler',
+      'theme-spiral',
+      'theme-pastel',
+      'theme-paper',
+      'theme-ink',
+      'theme-blossom',
+      'theme-forest',
+      'theme-midnight'
+    );
     DOM.body.classList.add(themeName);
     state.config.theme = themeName;
     saveConfig();
+
+    // Toggle corresponding spine variant
+    const spineVariants = document.querySelectorAll('.spine-variant');
+    spineVariants.forEach(v => v.classList.remove('active'));
+    if (themeName === 'theme-spiral') {
+      const sp = document.querySelector('.spine-variant-spiral');
+      if (sp) sp.classList.add('active');
+    } else if (themeName === 'theme-pastel') {
+      const pa = document.querySelector('.spine-variant-pastel');
+      if (pa) pa.classList.add('active');
+    } else {
+      const le = document.querySelector('.spine-variant-leather');
+      if (le) le.classList.add('active');
+    }
+
+    if (DOM.selectTheme) {
+      DOM.selectTheme.value = themeName;
+    }
 
     DOM.paletteSwatches.forEach(swatch => {
       if (swatch.dataset.theme === themeName) {
@@ -1006,6 +1037,17 @@
     DOM.body.classList.add(layoutName);
     state.config.paperLayout = layoutName;
     saveConfig();
+  }
+
+  function applyLayoutMode(modeName) {
+    DOM.body.classList.remove('layout-ephemera', 'layout-inline', 'layout-photobook', 'layout-scrap');
+    DOM.body.classList.add(modeName);
+    state.config.layoutMode = modeName;
+    saveConfig();
+
+    if (DOM.selectLayoutMode) {
+      DOM.selectLayoutMode.value = modeName;
+    }
   }
 
   /* ==========================================================================
@@ -1182,6 +1224,13 @@
     DOM.selectTheme.addEventListener('change', (e) => {
       applyTheme(e.target.value);
     });
+
+    if (DOM.selectLayoutMode) {
+      DOM.selectLayoutMode.addEventListener('change', (e) => {
+        applyLayoutMode(e.target.value);
+        showToast(`Layout switched to ${e.target.options[e.target.selectedIndex].text}`);
+      });
+    }
 
     DOM.selectSpeechLang.addEventListener('change', (e) => {
       state.config.speechLang = e.target.value;

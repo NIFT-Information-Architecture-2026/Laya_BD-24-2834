@@ -238,10 +238,32 @@
              ======================================================== -->
         <section class="app-screen screen-canvas" id="screenCanvas">
           
-          <!-- Tactile Leather Binding Spine along the left edge -->
-          <div class="leather-spine-strip">
-            <div class="spine-stitching"></div>
-            <div class="spine-emboss">DEAR DIARY • 2026</div>
+          <!-- Tactile Physical Binding Spine (Swaps between Leather, Silver Spiral, and Muted Pastel) -->
+          <div class="tactile-spine-strip" id="tactileSpine">
+            <!-- 1. Traveler's Saddle Leather Spine -->
+            <div class="spine-variant spine-variant-leather active">
+              <div class="spine-stitching"></div>
+              <div class="spine-elastic-cord"><span class="elastic-brass-rivet"></span></div>
+              <div class="spine-emboss">MIDORI • 2026</div>
+            </div>
+            <!-- 2. Silver Wire-O Spiral Spine -->
+            <div class="spine-variant spine-variant-spiral">
+              <div class="spiral-coils">
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+                <span class="spiral-loop"><span class="hole"></span><span class="wire"></span></span>
+              </div>
+            </div>
+            <!-- 3. Muted Pastel Hardbound Cloth with Ribbon Bookmark -->
+            <div class="spine-variant spine-variant-pastel">
+              <div class="spine-linen-grain"></div>
+              <div class="satin-ribbon-tail"></div>
+            </div>
           </div>
 
           <!-- Canvas Top Utility Toolbar -->
@@ -268,8 +290,27 @@
             <div class="perforated-dash-line"></div>
           </div>
 
-          <!-- Studio Customization Bar (Paper Style, Theme, Language) -->
+          <!-- Studio Customization Bar (Binding Theme, Picture Layout, Paper, Language) -->
           <div class="studio-selector-bar">
+            <div class="selector-item">
+              <label>Theme:</label>
+              <select id="selectTheme">
+                <option value="theme-traveler">1. 🧭 Traveler's Leather</option>
+                <option value="theme-spiral">2. 🌀 Silver Spiral Zine</option>
+                <option value="theme-pastel">3. 🎀 Muted Pastel Cloth</option>
+                <option value="theme-paper">4. Classic Paper</option>
+                <option value="theme-midnight">5. Midnight Noir</option>
+              </select>
+            </div>
+            <div class="selector-item">
+              <label>Layout:</label>
+              <select id="selectLayoutMode">
+                <option value="layout-ephemera">Mode 2: Collage & Ephemera</option>
+                <option value="layout-inline">Mode 1: Inline with Text</option>
+                <option value="layout-photobook">Mode 3: Photobook Grid</option>
+                <option value="layout-scrap">Mode 4: Pinned Paper Scrap</option>
+              </select>
+            </div>
             <div class="selector-item">
               <label>Paper:</label>
               <select id="selectPaperStyle">
@@ -277,16 +318,6 @@
                 <option value="layout-grid">Grid Graph</option>
                 <option value="layout-dotted">Dot Bullet</option>
                 <option value="layout-plain">Plain Paper</option>
-              </select>
-            </div>
-            <div class="selector-item">
-              <label>Theme:</label>
-              <select id="selectTheme">
-                <option value="theme-paper">1. Classic Paper</option>
-                <option value="theme-ink">2. Diary / Ink Pen</option>
-                <option value="theme-blossom">3. Blossom Rose</option>
-                <option value="theme-forest">4. Forest Sage</option>
-                <option value="theme-midnight">5. Midnight Noir</option>
               </select>
             </div>
             <div class="selector-item">
@@ -392,6 +423,37 @@ It went well! I presented my latest fashion designs. The feedback was encouragin
                   </div>
                   <div class="scrap-actions">
                     <button class="scrap-edit-btn" id="btnEditScrap">✎ edit note</button>
+                  </div>
+                </div>
+
+                <!-- 3. Vintage Café Ticket Stub & Ephemera (NIFT Hyderabad) -->
+                <div class="ephemera-ticket-stub" id="activeTicketStub" style="transform: rotate(-1.2deg);">
+                  <div class="ticket-washi-tape"></div>
+                  <div class="ticket-inner">
+                    <div class="ticket-perforated-notch"></div>
+                    <span class="ticket-header">BLUE TOKAI • HYDERABAD</span>
+                    <span class="ticket-meta">Jury Morning Cardamom Chai • No. 0482</span>
+                    <span class="ticket-stamp">PAID ✦ 14 OCT</span>
+                  </div>
+                </div>
+
+                <!-- 4. Dedicated Photobook 2x2 Grid (Active in Mode 3) -->
+                <div class="photobook-grid-page" id="photobookGrid">
+                  <div class="mini-polaroid-frame" style="transform: rotate(-2deg);">
+                    <img src="assets/editorial_showcase.jpg" alt="Fabric Swatches">
+                    <span class="mini-polaroid-chin">Swatches ✨</span>
+                  </div>
+                  <div class="mini-polaroid-frame" style="transform: rotate(2deg);">
+                    <img src="assets/editorial_showcase.jpg" alt="Drape Studio">
+                    <span class="mini-polaroid-chin">Draping Studio</span>
+                  </div>
+                  <div class="mini-polaroid-frame" style="transform: rotate(1.2deg);">
+                    <img src="assets/editorial_showcase.jpg" alt="Jury Panel">
+                    <span class="mini-polaroid-chin">Jury Desk</span>
+                  </div>
+                  <div class="mini-polaroid-frame" style="transform: rotate(-2.4deg);">
+                    <img src="assets/editorial_showcase.jpg" alt="Celebration">
+                    <span class="mini-polaroid-chin">Done! 🎉</span>
                   </div>
                 </div>
 
@@ -538,23 +600,23 @@ It went well! I presented my latest fashion designs. The feedback was encouragin
           <div class="settings-body">
             
             <div class="settings-section">
-              <h4 class="section-heading">🎨 AESTHETIC PALETTES</h4>
+              <h4 class="section-heading">🎨 THE 3 LOCKED BINDINGS & MOODBOARD PALETTES</h4>
               <div class="palette-swatches" id="paletteSwatches">
-                <button class="palette-swatch p-paper active" data-theme="theme-paper" title="Classic Paper">
+                <button class="palette-swatch p-traveler active" data-theme="theme-traveler" title="The Traveler's Leather (Midori)">
+                  <span class="swatch-color" style="background: #5C3A21; border: 1px solid #7A5C43;"></span>
+                  <span class="swatch-name">Leather</span>
+                </button>
+                <button class="palette-swatch p-spiral" data-theme="theme-spiral" title="The Silver Spiral (Studio Zine)">
+                  <span class="swatch-color" style="background: #EFEFEB; border: 1px solid #6B6B70;"></span>
+                  <span class="swatch-name">Spiral</span>
+                </button>
+                <button class="palette-swatch p-pastel" data-theme="theme-pastel" title="The Muted Pastel Hardbound">
+                  <span class="swatch-color" style="background: #E4EAEE; border: 1px solid #8E9AAF;"></span>
+                  <span class="swatch-name">Pastel</span>
+                </button>
+                <button class="palette-swatch p-paper" data-theme="theme-paper" title="Classic Warm Paper">
                   <span class="swatch-color" style="background: #FDFBF7; border: 1px solid #D6CEBE;"></span>
                   <span class="swatch-name">Paper</span>
-                </button>
-                <button class="palette-swatch p-ink" data-theme="theme-ink" title="Diary / Ink Pen">
-                  <span class="swatch-color" style="background: #FFFDF9; border: 1px solid #1A2436;"></span>
-                  <span class="swatch-name">Ink Pen</span>
-                </button>
-                <button class="palette-swatch p-blossom" data-theme="theme-blossom" title="Blossom Rose">
-                  <span class="swatch-color" style="background: #FAF3F0; border: 1px solid #E4C8C5;"></span>
-                  <span class="swatch-name">Blossom</span>
-                </button>
-                <button class="palette-swatch p-forest" data-theme="theme-forest" title="Forest Sage">
-                  <span class="swatch-color" style="background: #F3F6F2; border: 1px solid #A8BBA3;"></span>
-                  <span class="swatch-name">Forest</span>
                 </button>
                 <button class="palette-swatch p-midnight" data-theme="theme-midnight" title="Midnight Noir">
                   <span class="swatch-color" style="background: #141824; border: 1px solid #3A445D;"></span>
@@ -656,8 +718,13 @@ It went well! I presented my latest fashion designs. The feedback was encouragin
         <button class="modal-close-btn" id="btnCloseTearModal">✕</button>
       </div>
 
-      <!-- Perforated Torn Top Edge -->
-      <div class="perforated-tear-edge"></div>
+      <!-- Simulated Spiral-Tear Perforated Fringe -->
+      <div class="spiral-tear-fringe">
+        <span class="fringe-tooth"></span><span class="fringe-tooth"></span><span class="fringe-tooth"></span>
+        <span class="fringe-tooth"></span><span class="fringe-tooth"></span><span class="fringe-tooth"></span>
+        <span class="fringe-tooth"></span><span class="fringe-tooth"></span><span class="fringe-tooth"></span>
+        <span class="fringe-tooth"></span><span class="fringe-tooth"></span><span class="fringe-tooth"></span>
+      </div>
 
       <!-- Kraft Paper Letter Sheet -->
       <div class="kraft-letter-sheet" id="kraftLetterPreview">
