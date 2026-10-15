@@ -20,7 +20,8 @@
     theme: 'theme-traveler',
     paperLayout: 'layout-lined',
     layoutMode: 'layout-ephemera',
-    speechLang: 'ml-IN'
+    speechLang: 'ml-IN',
+    onboarded: false
   };
 
   const DEFAULT_ENTRIES = [
@@ -133,7 +134,8 @@
     manifestations: loadManifestations(),
     activeEntryId: 'entry_20261014',
     activePageIdx: 0,
-    currentScreen: 'screenLock',
+    currentScreen: 'screenCover',
+    previousScreen: 'screenSanctuary',
     pinInput: '',
     speechRecognition: null,
     isRecording: false,
@@ -191,9 +193,22 @@
   const DOM = {
     body: document.body,
     screens: document.querySelectorAll('.app-screen'),
+    screenCover: document.getElementById('screenCover'),
+    diaryCoverCard: document.getElementById('diaryCoverCard'),
+    screenOnboarding: document.getElementById('screenOnboarding'),
+    btnContinueFromOnboarding: document.getElementById('btnContinueFromOnboarding'),
     screenLock: document.getElementById('screenLock'),
+    screenSanctuary: document.getElementById('screenSanctuary'),
+    btnSanctuarySettings: document.getElementById('btnSanctuarySettings'),
+    btnOpenArchiveFromSanctuary: document.getElementById('btnOpenArchiveFromSanctuary'),
+    btnHugeMic: document.getElementById('btnHugeMic'),
+    btnQuietWrite: document.getElementById('btnQuietWrite'),
+    btnRecentGlance: document.getElementById('btnRecentGlance'),
+    hubDayName: document.getElementById('hubDayName'),
+    hubLangCaption: document.getElementById('hubLangCaption'),
     screenHome: document.getElementById('screenHome'),
     screenCanvas: document.getElementById('screenCanvas'),
+    btnCornerTurn: document.getElementById('btnCornerTurn'),
     screenSearch: document.getElementById('screenSearch'),
     screenVision: document.getElementById('screenVision'),
     screenSettings: document.getElementById('screenSettings'),
@@ -308,6 +323,9 @@
     btnExportBackup: document.getElementById('btnExportBackup'),
     btnImportBackup: document.getElementById('btnImportBackup'),
     fileImportBackup: document.getElementById('fileImportBackup'),
+    selectPaperStyleSettings: document.getElementById('selectPaperStyleSettings'),
+    selectSpeechLangSettings: document.getElementById('selectSpeechLangSettings'),
+    selectLayoutModeSettings: document.getElementById('selectLayoutModeSettings'),
     btnPurgeAll: document.getElementById('btnPurgeAll'),
     
     // Modals
@@ -342,29 +360,40 @@
     applyTheme(state.config.theme || 'theme-traveler');
     applyPaperLayout(state.config.paperLayout || 'layout-lined');
     applyLayoutMode(state.config.layoutMode || 'layout-ephemera');
+    updateHandwritingFont(state.config.speechLang || 'ml-IN');
     
     if (DOM.selectTheme) DOM.selectTheme.value = state.config.theme || 'theme-traveler';
     if (DOM.selectLayoutMode) DOM.selectLayoutMode.value = state.config.layoutMode || 'layout-ephemera';
     if (DOM.selectPaperStyle) DOM.selectPaperStyle.value = state.config.paperLayout;
     if (DOM.selectSpeechLang) DOM.selectSpeechLang.value = state.config.speechLang;
+
+    if (DOM.selectPaperStyleSettings) DOM.selectPaperStyleSettings.value = state.config.paperLayout || 'layout-lined';
+    if (DOM.selectSpeechLangSettings) DOM.selectSpeechLangSettings.value = state.config.speechLang || 'ml-IN';
+    if (DOM.selectLayoutModeSettings) DOM.selectLayoutModeSettings.value = state.config.layoutMode || 'layout-ephemera';
+
     DOM.settingHintDisplay.textContent = `"${state.config.passcodeHint}"`;
     DOM.chkAutoLock.checked = state.config.autoLock;
 
     bindEvents();
+    bindSwipeGestures();
     renderScrapbookFeed();
     renderCalendar(state.calYear, state.calMonth);
     renderManifestations();
     renderSearch();
     loadEntryIntoCanvas(state.activeEntryId);
+    updateSanctuaryHub();
 
-    // Initial Screen is Lock Screen
-    navigateTo('screenLock');
+    // Initial Screen is the Realistic Diary Front Cover
+    navigateTo('screenCover');
   }
 
   /* ==========================================================================
      NAVIGATION & SCREEN SWITCHING
      ========================================================================== */
   function navigateTo(screenId) {
+    if (state.currentScreen && state.currentScreen !== screenId && state.currentScreen !== 'screenLock' && state.currentScreen !== 'screenCover') {
+      state.previousScreen = state.currentScreen;
+    }
     state.currentScreen = screenId;
     DOM.screens.forEach(s => s.classList.remove('active'));
     
@@ -420,7 +449,8 @@
       DOM.pinFeedback.textContent = 'Sanctuary Unlocked';
       DOM.pinFeedback.classList.remove('error');
       setTimeout(() => {
-        navigateTo('screenHome');
+        updateSanctuaryHub();
+        navigateTo('screenSanctuary');
       }, 250);
     } else {
       DOM.pinFeedback.textContent = 'Incorrect Passcode';
@@ -445,7 +475,8 @@
         if (callback) {
           callback();
         } else {
-          navigateTo('screenHome');
+          updateSanctuaryHub();
+          navigateTo('screenSanctuary');
         }
       }, 500);
     }, 900);
@@ -1076,9 +1107,275 @@
   }
 
   /* ==========================================================================
+     SANCTUARY HUB & BILINGUAL HANDWRITING CONTROLS
+     ========================================================================== */
+  function updateHandwritingFont(lang) {
+    if (!lang) lang = state.config.speechLang || 'ml-IN';
+    let fontStack = "'Chilanka', 'Caveat', 'Kalam', cursive";
+    if (lang === 'en-IN') {
+      fontStack = "'Caveat', cursive";
+    } else if (lang === 'hi-IN') {
+      fontStack = "'Kalam', cursive";
+    } else if (lang === 'ml-IN') {
+      fontStack = "'Chilanka', cursive";
+    }
+    document.documentElement.style.setProperty('--font-handwriting', fontStack);
+  }
+
+  function updateSanctuaryHub() {
+    const today = new Date();
+    const formatted = today.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    if (DOM.hubDayName) DOM.hubDayName.textContent = formatted;
+
+    const langNames = {
+      'ml-IN': 'മലയാളം (Chilanka cursive ink)',
+      'en-IN': 'English (Caveat fountain ink)',
+      'hi-IN': 'हिंदी (Kalam pen script)',
+      'ta-IN': 'தமிழ் (Tamil ink script)',
+      'te-IN': 'తెలుగు (Telugu ink script)'
+    };
+    const activeLang = state.config.speechLang || 'ml-IN';
+    if (DOM.hubLangCaption) {
+      DOM.hubLangCaption.textContent = `Transcribing live into ${langNames[activeLang] || 'cursive ink'}`;
+    }
+
+    if (DOM.btnRecentGlance && state.entries.length > 0) {
+      const latest = state.entries[0];
+      const p1 = latest.pages[0];
+      if (p1 && p1.transcript) {
+        const glanceSnippet = p1.transcript.replace(/\n+/g, ' ').slice(0, 75);
+        const glanceTextEl = DOM.btnRecentGlance.querySelector('.glance-text');
+        if (glanceTextEl) glanceTextEl.textContent = `"${glanceSnippet}..."`;
+      }
+    }
+  }
+
+  /* ==========================================================================
+     3D PAGE TURNING & SWIPE GESTURES
+     ========================================================================== */
+  function flipToNextPage() {
+    const entry = state.entries.find(e => e.id === state.activeEntryId);
+    if (!entry) return;
+
+    if (state.activePageIdx < entry.pages.length - 1) {
+      saveActivePageToState();
+      const paper = document.getElementById('paperSheet');
+      if (paper) {
+        paper.classList.add('page-flip-left');
+        setTimeout(() => {
+          state.activePageIdx++;
+          renderActivePage();
+          paper.classList.remove('page-flip-left');
+        }, 220);
+      } else {
+        state.activePageIdx++;
+        renderActivePage();
+      }
+      showToast(`Turned to Page ${state.activePageIdx + 1}`);
+    } else if (entry.pages.length < 5) {
+      saveActivePageToState();
+      entry.pages.push({
+        pageNumber: entry.pages.length + 1,
+        transcript: '',
+        polaroid: null,
+        craftScrap: null
+      });
+      const paper = document.getElementById('paperSheet');
+      if (paper) {
+        paper.classList.add('page-flip-left');
+        setTimeout(() => {
+          state.activePageIdx = entry.pages.length - 1;
+          renderActivePage();
+          paper.classList.remove('page-flip-left');
+        }, 220);
+      } else {
+        state.activePageIdx = entry.pages.length - 1;
+        renderActivePage();
+      }
+      showToast(`Turned to fresh blank Page ${entry.pages.length} ✨`);
+    } else {
+      showToast('You are on the final page of this journal reflection');
+    }
+  }
+
+  function flipToPrevPage() {
+    if (state.activePageIdx > 0) {
+      saveActivePageToState();
+      const paper = document.getElementById('paperSheet');
+      if (paper) {
+        paper.classList.add('page-flip-right');
+        setTimeout(() => {
+          state.activePageIdx--;
+          renderActivePage();
+          paper.classList.remove('page-flip-right');
+        }, 220);
+      } else {
+        state.activePageIdx--;
+        renderActivePage();
+      }
+      showToast(`Turned back to Page ${state.activePageIdx + 1}`);
+    } else {
+      showToast('You are on Page 1');
+    }
+  }
+
+  function bindSwipeGestures() {
+    const target = document.getElementById('screenCanvas');
+    if (!target) return;
+
+    let startX = 0;
+    let startY = 0;
+    let isTouching = false;
+
+    target.addEventListener('touchstart', (e) => {
+      if (e.target === DOM.transcriptEditor && document.activeElement === DOM.transcriptEditor) {
+        return;
+      }
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isTouching = true;
+      }
+    }, { passive: true });
+
+    target.addEventListener('touchend', (e) => {
+      if (!isTouching) return;
+      isTouching = false;
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+      const diffX = endX - startX;
+      const diffY = endY - startY;
+
+      if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.2) {
+        if (diffX < 0) {
+          flipToNextPage();
+        } else {
+          flipToPrevPage();
+        }
+      }
+    }, { passive: true });
+
+    let mouseStartX = 0;
+    let isMouseDown = false;
+
+    target.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button, input, select, textarea') || e.target === DOM.transcriptEditor) return;
+      isMouseDown = true;
+      mouseStartX = e.clientX;
+    });
+
+    window.addEventListener('mouseup', (e) => {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+      const diffX = e.clientX - mouseStartX;
+      if (Math.abs(diffX) > 60) {
+        if (diffX < 0) {
+          flipToNextPage();
+        } else {
+          flipToPrevPage();
+        }
+      }
+    });
+  }
+
+  /* ==========================================================================
      EVENT BINDINGS
      ========================================================================== */
   function bindEvents() {
+    // Front Diary Cover Page Turn Interaction
+    if (DOM.diaryCoverCard) {
+      DOM.diaryCoverCard.addEventListener('click', () => {
+        DOM.diaryCoverCard.classList.add('cover-opening');
+        setTimeout(() => {
+          DOM.diaryCoverCard.classList.remove('cover-opening');
+          if (!state.config.onboarded) {
+            navigateTo('screenOnboarding');
+          } else {
+            navigateTo('screenLock');
+          }
+        }, 550);
+      });
+    }
+
+    // Language Onboarding Choices
+    document.querySelectorAll('.lang-choice-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.lang-choice-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        const lang = card.dataset.lang;
+        state.config.speechLang = lang;
+        saveConfig();
+        updateHandwritingFont(lang);
+        if (DOM.selectSpeechLang) DOM.selectSpeechLang.value = lang;
+        if (DOM.selectSpeechLangSettings) DOM.selectSpeechLangSettings.value = lang;
+        updateSanctuaryHub();
+      });
+    });
+
+    document.querySelectorAll('.binding-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.binding-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const theme = pill.dataset.theme;
+        applyTheme(theme);
+        if (DOM.selectTheme) DOM.selectTheme.value = theme;
+      });
+    });
+
+    if (DOM.btnContinueFromOnboarding) {
+      DOM.btnContinueFromOnboarding.addEventListener('click', () => {
+        state.config.onboarded = true;
+        saveConfig();
+        navigateTo('screenLock');
+        showToast('Sanctuary locked & ready. Enter default PIN: 2428');
+      });
+    }
+
+    // Sanctuary Hub (Huge Voice Recorder Gate)
+    if (DOM.btnHugeMic) {
+      DOM.btnHugeMic.addEventListener('click', () => {
+        loadEntryIntoCanvas(state.activeEntryId);
+        navigateTo('screenCanvas');
+        setTimeout(() => {
+          if (!state.isRecording) {
+            toggleSpeechRecognition();
+          }
+        }, 300);
+      });
+    }
+
+    if (DOM.btnQuietWrite) {
+      DOM.btnQuietWrite.addEventListener('click', () => {
+        loadEntryIntoCanvas(state.activeEntryId);
+        navigateTo('screenCanvas');
+        setTimeout(() => {
+          DOM.transcriptEditor.focus();
+        }, 300);
+      });
+    }
+
+    if (DOM.btnOpenArchiveFromSanctuary) {
+      DOM.btnOpenArchiveFromSanctuary.addEventListener('click', () => {
+        renderScrapbookFeed();
+        renderCalendar(state.calYear, state.calMonth);
+        navigateTo('screenHome');
+      });
+    }
+
+    if (DOM.btnSanctuarySettings) {
+      DOM.btnSanctuarySettings.addEventListener('click', () => {
+        state.previousScreen = 'screenSanctuary';
+        navigateTo('screenSettings');
+      });
+    }
+
+    if (DOM.btnRecentGlance) {
+      DOM.btnRecentGlance.addEventListener('click', () => {
+        loadEntryIntoCanvas(state.activeEntryId);
+        navigateTo('screenCanvas');
+      });
+    }
+
     // Mode Switchers
     DOM.btnModeDesk.addEventListener('click', () => {
       DOM.body.classList.remove('mode-mobile', 'mode-full');
@@ -1203,10 +1500,15 @@
     // Canvas Topbar Actions
     DOM.btnBackToHome.addEventListener('click', () => {
       saveActivePageToState();
-      renderScrapbookFeed();
-      renderCalendar(state.calYear, state.calMonth);
-      navigateTo('screenHome');
+      updateSanctuaryHub();
+      navigateTo(state.previousScreen || 'screenSanctuary');
     });
+
+    if (DOM.btnCornerTurn) {
+      DOM.btnCornerTurn.addEventListener('click', () => {
+        flipToNextPage();
+      });
+    }
 
     DOM.btnSaveCanvas.addEventListener('click', () => {
       saveActivePageToState();
@@ -1481,20 +1783,48 @@
 
     // Settings Events
     DOM.btnOpenSettings.addEventListener('click', () => {
+      state.previousScreen = state.currentScreen || 'screenSanctuary';
       navigateTo('screenSettings');
     });
 
     DOM.btnCloseSettings.addEventListener('click', () => {
-      navigateTo('screenHome');
+      navigateTo(state.previousScreen || 'screenSanctuary');
     });
 
     DOM.paletteSwatches.forEach(swatch => {
       swatch.addEventListener('click', () => {
         applyTheme(swatch.dataset.theme);
-        DOM.selectTheme.value = swatch.dataset.theme;
-        showToast(`Theme switched to ${swatch.title}`);
+        if (DOM.selectTheme) DOM.selectTheme.value = swatch.dataset.theme;
+        showToast(`Binding switched: ${swatch.title}`);
       });
     });
+
+    if (DOM.selectPaperStyleSettings) {
+      DOM.selectPaperStyleSettings.addEventListener('change', (e) => {
+        applyPaperLayout(e.target.value);
+        if (DOM.selectPaperStyle) DOM.selectPaperStyle.value = e.target.value;
+        showToast(`Notebook ruling changed: ${e.target.options[e.target.selectedIndex].text}`);
+      });
+    }
+
+    if (DOM.selectSpeechLangSettings) {
+      DOM.selectSpeechLangSettings.addEventListener('change', (e) => {
+        state.config.speechLang = e.target.value;
+        saveConfig();
+        updateHandwritingFont(e.target.value);
+        if (DOM.selectSpeechLang) DOM.selectSpeechLang.value = e.target.value;
+        updateSanctuaryHub();
+        showToast(`Dialect updated: ${e.target.options[e.target.selectedIndex].text}`);
+      });
+    }
+
+    if (DOM.selectLayoutModeSettings) {
+      DOM.selectLayoutModeSettings.addEventListener('change', (e) => {
+        applyLayoutMode(e.target.value);
+        if (DOM.selectLayoutMode) DOM.selectLayoutMode.value = e.target.value;
+        showToast(`Layout updated: ${e.target.options[e.target.selectedIndex].text}`);
+      });
+    }
 
     DOM.btnChangePasscode.addEventListener('click', () => {
       const current = prompt('Enter existing 4-digit passcode:');

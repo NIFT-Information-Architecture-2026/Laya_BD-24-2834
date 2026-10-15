@@ -102,9 +102,99 @@
       <main class="app-viewport" id="appViewport">
 
         <!-- ========================================================
+             SCREEN -1: THE DIARY FRONT COVER (EDITORIAL FRONTISPIECE)
+             ======================================================== -->
+        <section class="app-screen screen-cover active" id="screenCover">
+          <div class="diary-cover-card" id="diaryCoverCard" title="Tap or swipe to open your diary">
+            <div class="cover-leather-grain"></div>
+            <div class="cover-perimeter-stitching"></div>
+            <div class="cover-brass-corners">
+              <span class="corner tl"></span><span class="corner tr"></span>
+              <span class="corner bl"></span><span class="corner br"></span>
+            </div>
+            
+            <div class="cover-center-seal">
+              <div class="cover-padlock-emboss">
+                <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="var(--brass-fill)"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  <circle cx="12" cy="16" r="1.5" fill="#2C2523"></circle>
+                </svg>
+              </div>
+              <h1 class="cover-gold-title">DEAR DIARY</h1>
+              <p class="cover-gold-subtitle">THE MULTIMODAL MEMORY ARCHIVE</p>
+              <div class="cover-divider-flourish">✦ ✦ ✦</div>
+              <span class="cover-gold-dept">NIFT HYDERABAD • BD-24-2834</span>
+            </div>
+
+            <!-- Vertical Elastic Band with Brass Clasp Medallion -->
+            <div class="cover-elastic-band">
+              <span class="brass-clasp-medallion">✦</span>
+            </div>
+
+            <!-- Hanging Satin Ribbon Bookmark Tip -->
+            <div class="cover-ribbon-tip"></div>
+
+            <div class="cover-tap-prompt">
+              <span class="turn-page-icon">📖 ➔</span>
+              <span class="turn-prompt-text">Tap cover to turn page & open</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SCREEN 0B: FIRST-TIME WELCOME & LANGUAGE ONBOARDING
+             ======================================================== -->
+        <section class="app-screen screen-onboarding" id="screenOnboarding">
+          <div class="onboarding-card">
+            <div class="onboarding-header">
+              <span class="onboarding-feather">🪶</span>
+              <h2 class="onboarding-title">Welcome to Your Sanctuary</h2>
+              <p class="onboarding-sub">Select your primary speech & ink handwriting language</p>
+            </div>
+
+            <div class="onboarding-lang-grid">
+              <button class="lang-choice-card active" data-lang="ml-IN">
+                <span class="lang-native">മലയാളം</span>
+                <span class="lang-roman">Malayalam (Chilanka)</span>
+              </button>
+              <button class="lang-choice-card" data-lang="en-IN">
+                <span class="lang-native">English</span>
+                <span class="lang-roman">India (Caveat)</span>
+              </button>
+              <button class="lang-choice-card" data-lang="hi-IN">
+                <span class="lang-native">हिंदी</span>
+                <span class="lang-roman">Hindi (Kalam)</span>
+              </button>
+              <button class="lang-choice-card" data-lang="ta-IN">
+                <span class="lang-native">தமிழ்</span>
+                <span class="lang-roman">Tamil</span>
+              </button>
+              <button class="lang-choice-card" data-lang="te-IN">
+                <span class="lang-native">తెలుగు</span>
+                <span class="lang-roman">Telugu</span>
+              </button>
+            </div>
+
+            <div class="onboarding-binding-select">
+              <label>Choose Your Journal Binding:</label>
+              <div class="binding-pill-group">
+                <button class="binding-pill active" data-theme="theme-traveler">🧭 Traveler's Leather</button>
+                <button class="binding-pill" data-theme="theme-spiral">🌀 Silver Spiral</button>
+                <button class="binding-pill" data-theme="theme-pastel">🎀 Muted Pastel</button>
+              </div>
+            </div>
+
+            <button class="btn-primary-wide" id="btnContinueFromOnboarding">
+              Open Privacy Vault 🔒
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================================
              SCREEN 0: THE PRIVACY VAULT (PASSCODE LOCK SCREEN)
              ======================================================== -->
-        <section class="app-screen screen-lock active" id="screenLock">
+        <section class="app-screen screen-lock" id="screenLock">
           <div class="lock-backdrop">
             <div class="lock-header">
               <div class="brass-padlock-icon">
@@ -157,9 +247,65 @@
           </div>
         </section>
 
+        <!-- ========================================================
+             SCREEN: THE SANCTUARY VOICE HUB (HUGE VOICE RECORDER GATE)
+             ======================================================== -->
+        <section class="app-screen screen-sanctuary" id="screenSanctuary">
+          <!-- Top Utility Bar -->
+          <header class="app-topbar">
+            <button class="icon-btn" id="btnSanctuarySettings" title="Atelier Settings">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            </button>
+            <div class="topbar-branding">
+              <span class="topbar-lock-icon">🔒</span>
+              <span class="topbar-title">DEAR DIARY</span>
+            </div>
+            <div class="topbar-right-actions">
+              <button class="icon-btn-text" id="btnOpenArchiveFromSanctuary" title="View Past Diary Pages">
+                <span class="btn-icon">📖</span>
+                <span class="btn-label">Archive</span>
+              </button>
+            </div>
+          </header>
+
+          <div class="sanctuary-hub-body">
+            <div class="sanctuary-hub-date">
+              <span class="hub-day-name" id="hubDayName">Tuesday, 14 October 2026</span>
+              <span class="hub-whisper-motto">"A quiet sanctuary for your voice."</span>
+            </div>
+
+            <!-- THE HUGE VOICE RECORDER ICON EMBLEM -->
+            <div class="huge-voice-recorder-stage">
+              <div class="recorder-aura-ring r1"></div>
+              <div class="recorder-aura-ring r2"></div>
+              <div class="recorder-aura-ring r3"></div>
+              
+              <button class="huge-mic-btn" id="btnHugeMic" title="Tap to Speak Today's Story directly onto the paper">
+                <div class="mic-inner-core">
+                  <span class="huge-mic-icon">🎙️</span>
+                </div>
+              </button>
+              
+              <h3 class="huge-mic-title">Tap to Speak Your Day</h3>
+              <p class="huge-mic-caption" id="hubLangCaption">Transcribing live into മലയാളം Chilanka cursive ink</p>
+            </div>
+
+            <!-- Quiet Fallback Action & Quick Memory Preview -->
+            <div class="sanctuary-hub-footer">
+              <button class="btn-quiet-write" id="btnQuietWrite" title="Write with keyboard directly on the lines">
+                <span>⌨️</span> Or tap to write quietly with ink pen
+              </button>
+              
+              <div class="recent-memory-glance" id="btnRecentGlance" title="Click to view latest journal page">
+                <span class="glance-tag">LATEST REFLECTION</span>
+                <p class="glance-text">"ഇന്ന് കോളേജിൽ വച്ച് ജൂറി കഴിഞ്ഞു... It went well! NIFT Jury Day ✨"</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- ========================================================
-             SCREEN 1: THE SANCTUARY HOME (CALENDAR & SCRAPBOOK FEED)
+             SCREEN 1: THE SANCTUARY HOME (CALENDAR & SCRAPBOOK FEED ARCHIVE)
              ======================================================== -->
         <section class="app-screen screen-home" id="screenHome">
           <!-- Top App Bar -->
@@ -467,6 +613,12 @@ It went well! I presented my latest fashion designs. The feedback was encouragin
                 <button class="add-tag-chip" id="btnAddTag">+ tag</button>
               </div>
 
+              <!-- Page Swipe Turning Helper & 3D Corner Curl -->
+              <div class="page-swipe-turn-helper">
+                <span class="swipe-hint-text">👈 Swipe left to turn page 👉</span>
+                <div class="corner-page-curl" id="btnCornerTurn" title="Turn to next page"></div>
+              </div>
+
             </div>
           </div>
 
@@ -622,6 +774,46 @@ It went well! I presented my latest fashion designs. The feedback was encouragin
                   <span class="swatch-color" style="background: #141824; border: 1px solid #3A445D;"></span>
                   <span class="swatch-name">Midnight</span>
                 </button>
+              </div>
+
+              <div class="setting-row" style="margin-top: 14px;">
+                <div>
+                  <span class="setting-title">Notebook Paper Ruling</span>
+                  <span class="setting-desc">Tactile page line texture</span>
+                </div>
+                <select id="selectPaperStyleSettings" class="settings-select">
+                  <option value="layout-lined">Ruled Notebook Lines</option>
+                  <option value="layout-grid">Grid Graph Paper</option>
+                  <option value="layout-dotted">Dot Bullet Journal</option>
+                  <option value="layout-plain">Plain Cream Parchment</option>
+                </select>
+              </div>
+
+              <div class="setting-row">
+                <div>
+                  <span class="setting-title">Voice & Ink Handwriting</span>
+                  <span class="setting-desc">Regional dialect & cursive ink font</span>
+                </div>
+                <select id="selectSpeechLangSettings" class="settings-select">
+                  <option value="ml-IN">മലയാളം (Chilanka Ink)</option>
+                  <option value="en-IN">English (Caveat Fountain)</option>
+                  <option value="hi-IN">हिंदी (Kalam Pen)</option>
+                  <option value="ta-IN">தமிழ் (Tamil Script)</option>
+                  <option value="te-IN">తెలుగు (Telugu Script)</option>
+                </select>
+              </div>
+
+              <div class="setting-row">
+                <div>
+                  <span class="setting-title">Scrapbook Layout Mode</span>
+                  <span class="setting-desc">Ephemera, polaroid, or photobook grid</span>
+                </div>
+                <select id="selectLayoutModeSettings" class="settings-select">
+                  <option value="layout-ephemera">Mode 2: Collage & Ephemera</option>
+                  <option value="layout-inline">Mode 1: Inline with Text</option>
+                  <option value="layout-photobook">Mode 3: Photobook Grid</option>
+                  <option value="layout-scrap">Mode 4: Pinned Paper Scrap</option>
+                </select>
               </div>
             </div>
 
