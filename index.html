@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dear Diary — The Multimodal Memory Archive</title>
+  
+  <!-- Typography & Regional Authentic Handwriting Stacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Chilanka&family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Kalam:wght@300;400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="mode-desk theme-paper layout-lined">
+
+  <!-- Desktop Presentation Environment (The Editorial Flat-Lay Desk) -->
+  <div class="editorial-desk" id="editorialDesk">
+    
+    <!-- Ambient Golden-Hour Light Beam and Eucalyptus Leaf Shadows -->
+    <div class="desk-sunlight-beam"></div>
+    <div class="desk-leaf-shadows"></div>
+
+    <!-- Editorial Desk Props -->
+    <!-- Hot Indian Chai Cup -->
+    <div class="prop-chai" title="A warm cup of hot cardamom chai">
+      <div class="chai-saucer"></div>
+      <div class="chai-cup">
+        <div class="chai-liquid"></div>
+        <div class="chai-steam-bubble s1"></div>
+        <div class="chai-steam-bubble s2"></div>
+        <div class="chai-steam-bubble s3"></div>
+      </div>
+      <div class="chai-spices">
+        <span class="spice-clove">✦</span>
+        <span class="spice-anise">🟊</span>
+      </div>
+    </div>
+
+    <!-- Classic Brass Fountain Pen with Ink Droplet -->
+    <div class="prop-pen" title="Vintage brass fountain pen">
+      <div class="pen-body">
+        <div class="pen-barrel"></div>
+        <div class="pen-grip"></div>
+        <div class="pen-nib"></div>
+      </div>
+      <div class="ink-droplet"></div>
+    </div>
+
+    <!-- Dried Botanical Eucalyptus Leaves -->
+    <div class="prop-eucalyptus e-top" title="Dried eucalyptus branch">
+      <div class="e-stem"></div>
+      <div class="e-leaf el-1"></div>
+      <div class="e-leaf el-2"></div>
+      <div class="e-leaf el-3"></div>
+      <div class="e-leaf el-4"></div>
+      <div class="e-leaf el-5"></div>
+    </div>
+
+    <div class="prop-eucalyptus e-bottom" title="Eucalyptus sprig">
+      <div class="e-stem"></div>
+      <div class="e-leaf el-6"></div>
+      <div class="e-leaf el-7"></div>
+      <div class="e-leaf el-8"></div>
+    </div>
+
+    <!-- Top Floating Curatorial Control Bar -->
+    <header class="editorial-nav-bar">
+      <div class="curator-brand">
+        <span class="brand-sub">NIFT HYDERABAD • FASHION COMMUNICATION</span>
+        <h1 class="brand-title">DEAR DIARY <span class="badge-tag">BD-24-2834</span></h1>
+      </div>
+
+      <div class="viewport-controls">
+        <button class="view-btn active" id="btnModeDesk" title="Showcase Editorial Flat-Lay Desk">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 10h10v2H7zm0-3h10v2H7zm0 6h7v2H7z"/></svg>
+          Editorial Desk
+        </button>
+        <button class="view-btn" id="btnModeMobile" title="Focus Phone Screen">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          Mobile Frame
+        </button>
+        <button class="view-btn" id="btnModeFull" title="Full Studio Workspace">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+          Full Canvas
+        </button>
+        <button class="view-btn lock-quick-btn" id="btnQuickLock" title="Lock App Immediately">
+          🔒 Lock Vault
+        </button>
+      </div>
+    </header>
+
+    <!-- The Modern Bezel-less Smartphone Device -->
+    <div class="phone-frame" id="phoneContainer">
+      
+      <!-- Phone Hardware Bezel and Speaker Ear-slit / Dynamic Island -->
+      <div class="phone-speaker">
+        <span class="phone-camera-lens"></span>
+      </div>
+
+      <!-- App Screen Viewport Wrapper -->
+      <main class="app-viewport" id="appViewport">
+
+        <!-- ========================================================
+             SCREEN 0: THE PRIVACY VAULT (PASSCODE LOCK SCREEN)
+             ======================================================== -->
+        <section class="app-screen screen-lock active" id="screenLock">
+          <div class="lock-backdrop">
+            <div class="lock-header">
+              <div class="brass-padlock-icon">
+                <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="var(--brass-fill)"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  <circle cx="12" cy="16" r="1.5" fill="#2C2523"></circle>
+                </svg>
+              </div>
+              <h2 class="lock-title">DEAR DIARY</h2>
+              <p class="lock-tagline">"A quiet sanctuary for your voice."</p>
+            </div>
+
+            <!-- PIN Display Dots -->
+            <div class="pin-display">
+              <span class="pin-dot" id="pinDot0"></span>
+              <span class="pin-dot" id="pinDot1"></span>
+              <span class="pin-dot" id="pinDot2"></span>
+              <span class="pin-dot" id="pinDot3"></span>
+            </div>
+
+            <div class="pin-feedback" id="pinFeedback">Enter 4-digit passcode</div>
+
+            <!-- Numeric Tactile Keypad -->
+            <div class="keypad-grid">
+              <button class="key-btn" data-key="1">1</button>
+              <button class="key-btn" data-key="2">2</button>
+              <button class="key-btn" data-key="3">3</button>
+              <button class="key-btn" data-key="4">4</button>
+              <button class="key-btn" data-key="5">5</button>
+              <button class="key-btn" data-key="6">6</button>
+              <button class="key-btn" data-key="7">7</button>
+              <button class="key-btn" data-key="8">8</button>
+              <button class="key-btn" data-key="9">9</button>
+              <button class="key-btn key-aux" id="btnPinHint" title="Passcode Memory Clue">
+                <span class="key-icon">🔑</span>
+                <span class="aux-label">Hint</span>
+              </button>
+              <button class="key-btn" data-key="0">0</button>
+              <button class="key-btn key-aux" id="btnBiometric" title="Unlock via Touch / Face ID">
+                <span class="key-icon">👆</span>
+                <span class="aux-label">Bio</span>
+              </button>
+            </div>
+
+            <div class="lock-footer">
+              <button class="text-link-btn" id="btnResetVault">Emergency: Erase & Start Fresh</button>
+              <div class="default-pin-hint">Demo default PIN: <strong>2428</strong></div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================================
+             SCREEN 1: THE SANCTUARY HOME (CALENDAR & SCRAPBOOK FEED)
+             ======================================================== -->
+        <section class="app-screen screen-home" id="screenHome">
+          <!-- Top App Bar -->
+          <header class="app-topbar">
+            <button class="icon-btn" id="btnOpenSettings" title="Atelier Settings">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            </button>
+            <div class="topbar-branding">
+              <span class="topbar-lock-icon">🔒</span>
+              <span class="topbar-title">DEAR DIARY</span>
+            </div>
+            <button class="icon-btn" id="btnOpenSearch" title="Search Memory Archive">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
+          </header>
+
+          <!-- Sanctuary Segment Tabs -->
+          <div class="sanctuary-tabs">
+            <button class="tab-chip active" id="tabFeed">🖼️ Memory Scrapbook</button>
+            <button class="tab-chip" id="tabCalendar">📅 Calendar View</button>
+          </div>
+
+          <!-- Tab Content A: Scrapbook Feed -->
+          <div class="sanctuary-content" id="feedContainer">
+            <!-- Feed Filter Pills -->
+            <div class="scrapbook-pills">
+              <span class="pill-badge active" data-filter="all">All Memories</span>
+              <span class="pill-badge" data-filter="milestone">🌟 Milestones</span>
+              <span class="pill-badge" data-filter="college">#nift</span>
+              <span class="pill-badge" data-filter="audio">🎧 Voice Notes</span>
+            </div>
+
+            <!-- Scrapbook Masonry Grid Cards -->
+            <div class="scrapbook-grid" id="scrapbookGrid">
+              <!-- Dynamically populated from state -->
+            </div>
+          </div>
+
+          <!-- Tab Content B: Calendar View -->
+          <div class="sanctuary-content hidden" id="calendarContainer">
+            <div class="calendar-card">
+              <div class="cal-header">
+                <button class="cal-nav-btn" id="calPrev">&lt;</button>
+                <h3 class="cal-month-title" id="calMonthTitle">OCTOBER 2026</h3>
+                <button class="cal-nav-btn" id="calNext">&gt;</button>
+              </div>
+              <div class="cal-weekdays">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+              <div class="cal-grid" id="calGrid">
+                <!-- Dynamically populated -->
+              </div>
+              <div class="cal-legend">
+                <span class="legend-item"><span class="legend-icon">📖</span> Entry Saved</span>
+                <span class="legend-item"><span class="legend-icon">🎉</span> Milestone / Birthday</span>
+              </div>
+            </div>
+
+            <!-- Selected Day Summary Preview -->
+            <div class="cal-day-detail" id="calDayDetail">
+              <div class="day-detail-header">
+                <span class="detail-date" id="selectedDateLabel">Tuesday, 14 October 2026</span>
+                <span class="detail-badge" id="selectedDateBadge">📖 1 Entry</span>
+              </div>
+              <div class="day-detail-body" id="selectedDateBody">
+                <p class="detail-preview">"ഇന്ന് കോളേജിൽ വച്ച് ജൂറി കഴിഞ്ഞു... It went well! Presented my latest fashion designs..."</p>
+                <button class="open-day-btn" id="btnOpenSelectedDay">Open Today's Canvas →</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================================
+             SCREEN 3: THE DAILY CANVAS & MULTI-PAGE STUDIO (CREATE / EDIT)
+             ======================================================== -->
+        <section class="app-screen screen-canvas" id="screenCanvas">
+          
+          <!-- Tactile Leather Binding Spine along the left edge -->
+          <div class="leather-spine-strip">
+            <div class="spine-stitching"></div>
+            <div class="spine-emboss">DEAR DIARY • 2026</div>
+          </div>
+
+          <!-- Canvas Top Utility Toolbar -->
+          <header class="canvas-topbar">
+            <button class="icon-btn" id="btnBackToHome" title="Return to Sanctuary">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </button>
+            <div class="canvas-title-group">
+              <div class="canvas-heading-lock">
+                <span class="mini-padlock">🔒</span>
+                <span class="canvas-date" id="canvasDateDisplay">Tuesday, 14 October</span>
+              </div>
+              <span class="canvas-status-pill" id="canvasSaveStatus">Vault Sealed</span>
+            </div>
+            <button class="icon-btn gold-accent" id="btnSaveCanvas" title="Encrypt & Save Vault">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+            </button>
+          </header>
+
+          <!-- Perforated Tear-Line Notice in Top Corner -->
+          <div class="corner-tear-tag" id="btnTriggerTear" title="Tear a Page to create a safe keepsake letter">
+            <span class="tear-scissors">✂</span>
+            <span class="tear-text">Tear a Page</span>
+            <div class="perforated-dash-line"></div>
+          </div>
+
+          <!-- Studio Customization Bar (Paper Style, Theme, Language) -->
+          <div class="studio-selector-bar">
+            <div class="selector-item">
+              <label>Paper:</label>
+              <select id="selectPaperStyle">
+                <option value="layout-lined">Ruled Lines</option>
+                <option value="layout-grid">Grid Graph</option>
+                <option value="layout-dotted">Dot Bullet</option>
+                <option value="layout-plain">Plain Paper</option>
+              </select>
+            </div>
+            <div class="selector-item">
+              <label>Theme:</label>
+              <select id="selectTheme">
+                <option value="theme-paper">1. Classic Paper</option>
+                <option value="theme-ink">2. Diary / Ink Pen</option>
+                <option value="theme-blossom">3. Blossom Rose</option>
+                <option value="theme-forest">4. Forest Sage</option>
+                <option value="theme-midnight">5. Midnight Noir</option>
+              </select>
+            </div>
+            <div class="selector-item">
+              <label>Speech:</label>
+              <select id="selectSpeechLang">
+                <option value="ml-IN">മലയാളം (Malayalam)</option>
+                <option value="en-IN">English (India)</option>
+                <option value="hi-IN">हिंदी (Hindi)</option>
+                <option value="ta-IN">தமிழ் (Tamil)</option>
+                <option value="te-IN">తెలుగు (Telugu)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Multi-Page Pagination Bar (1 to 5 Pages) -->
+          <div class="pagination-bar">
+            <div class="page-switcher">
+              <button class="page-nav-btn" id="btnPrevPage" disabled>&lt;</button>
+              <span class="page-indicator" id="pageIndicator">Page 1 of 2</span>
+              <button class="page-nav-btn" id="btnNextPage">&gt;</button>
+            </div>
+            <div class="page-actions">
+              <button class="btn-micro" id="btnAddPage">+ Add Page (Max 5)</button>
+              <button class="btn-micro btn-danger-micro" id="btnRemovePage" title="Delete current page">✕</button>
+            </div>
+          </div>
+
+          <!-- THE AUTHENTIC NOTEBOOK PAPER SHEET -->
+          <div class="paper-sheet-scroll" id="paperScroll">
+            <div class="paper-sheet" id="paperSheet">
+              
+              <!-- Red Left Margin Line (Classic Notebook Touch) -->
+              <div class="paper-margin-line"></div>
+
+              <!-- Page Title / Date in Editorial Serif -->
+              <div class="sheet-header">
+                <h2 class="sheet-title">DEAR DIARY</h2>
+                <div class="sheet-meta">
+                  <span class="sheet-date-text" id="sheetDateDisplay">Tuesday, 14 October 2026</span>
+                  <button class="milestone-star-btn" id="btnToggleMilestone" title="Mark this day as a Milestone (🌟)">
+                    <span class="star-icon">☆</span>
+                    <span class="milestone-label">Milestone</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Margin Audio Player Pill -->
+              <div class="margin-audio-pill" id="marginAudioPill" title="Audio recording for today">
+                <button class="audio-play-toggle" id="btnToggleAudio">
+                  <span class="audio-play-icon">▶</span>
+                </button>
+                <div class="audio-soundwave-bars" id="soundwaveContainer">
+                  <span class="sw-bar"></span><span class="sw-bar"></span><span class="sw-bar"></span>
+                  <span class="sw-bar"></span><span class="sw-bar"></span><span class="sw-bar"></span>
+                  <span class="sw-bar"></span><span class="sw-bar"></span>
+                </div>
+                <span class="audio-time-pill" id="audioTimeLabel">01:42</span>
+                <button class="btn-pin-voice" id="btnPinVoice" title="Pin Voice Permanently (Zero Expiry)">
+                  <span class="pin-icon">📌</span>
+                </button>
+              </div>
+
+              <!-- Main Bilingual Handwriting Transcript Area -->
+              <div class="transcript-ruled-area">
+                <div 
+                  class="transcript-content-editable" 
+                  id="transcriptEditor" 
+                  contenteditable="true" 
+                  spellcheck="false"
+                  data-placeholder="Tap anywhere on the lines to type or speak freely...">
+Tuesday, 14 Oct. — Reflecting on today.
+
+ഇന്ന് കോളേജിൽ വച്ച് ജൂറി കഴിഞ്ഞു...
+It went well! I presented my latest fashion designs. The feedback was encouraging. Feeling accomplished and inspired.
+                </div>
+              </div>
+
+              <!-- Tactile Scrapbook Ephemera Container -->
+              <div class="ephemera-stage" id="ephemeraStage">
+                
+                <!-- 1. Slightly tilted Vintage Polaroid Photo -->
+                <div class="polaroid-frame" id="activePolaroid" style="transform: rotate(-2.5deg);">
+                  <div class="polaroid-pin-tape"></div>
+                  <div class="polaroid-photo-box">
+                    <img src="assets/editorial_showcase.jpg" alt="Fashion Jury Snapshot" id="polaroidImage" class="polaroid-img">
+                    <div class="polaroid-overlay-action">
+                      <button class="polaroid-btn" id="btnChangePolaroid">📷 Change</button>
+                    </div>
+                  </div>
+                  <div class="polaroid-chin">
+                    <input type="text" class="chin-caption-input" id="polaroidCaption" value="NIFT Jury Day ✨" placeholder="Add handwritten caption...">
+                  </div>
+                </div>
+
+                <!-- 2. Torn Scrap of Real Craft Paper ("Something Directly from the Page") -->
+                <div class="torn-craft-scrap" id="activeScrap" style="transform: rotate(1.8deg);">
+                  <div class="washi-tape-strip sage-tape"></div>
+                  <div class="craft-scrap-content">
+                    <span class="scrap-badge">Directly from the Page</span>
+                    <p class="scrap-handwriting" id="craftScrapText" contenteditable="true">
+                      "Fabric weaves tell stories when words fail to breathe."
+                    </p>
+                  </div>
+                  <div class="scrap-actions">
+                    <button class="scrap-edit-btn" id="btnEditScrap">✎ edit note</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Tags Chips on the Page -->
+              <div class="page-tags-strip" id="pageTagsStrip">
+                <span class="tag-chip">#nift</span>
+                <span class="tag-chip">#juryday</span>
+                <span class="tag-chip">#fashion</span>
+                <button class="add-tag-chip" id="btnAddTag">+ tag</button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bottom Voice & Studio Controls Bar -->
+          <footer class="canvas-action-dock">
+            <button class="dock-action-btn" id="btnTriggerSpeech" title="One-Tap Voice-to-Text Recognition">
+              <span class="dock-icon mic-pulse-ring">🎙️</span>
+              <span class="dock-label" id="micStatusLabel">Speak</span>
+            </button>
+            <button class="dock-action-btn" id="btnFocusType" title="Focus Ruled Lines for Keyboard Typing">
+              <span class="dock-icon">⌨️</span>
+              <span class="dock-label">Type</span>
+            </button>
+            <button class="dock-action-btn" id="btnAddPolaroidDialog" title="Add / Replace Polaroid Frame">
+              <span class="dock-icon">📷</span>
+              <span class="dock-label">Polaroid</span>
+            </button>
+            <button class="dock-action-btn" id="btnAddScrapDialog" title="Add Physical Scrap with Washi Tape">
+              <span class="dock-icon">📝</span>
+              <span class="dock-label">Scrap</span>
+            </button>
+            <button class="dock-action-btn" id="btnOpenTearModal" title="Tear a Page Keepsake Letter">
+              <span class="dock-icon">💌</span>
+              <span class="dock-label">Tear</span>
+            </button>
+          </footer>
+
+        </section>
+
+
+        <!-- ========================================================
+             SCREEN 2: MEMORY RETRIEVAL & EPISODIC SEARCH
+             ======================================================== -->
+        <section class="app-screen screen-search" id="screenSearch">
+          <header class="app-topbar">
+            <button class="icon-btn" id="btnCloseSearch">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </button>
+            <span class="topbar-title">SEARCH MEMORIES</span>
+            <div style="width: 32px;"></div>
+          </header>
+
+          <div class="search-body">
+            <!-- Search Input Box -->
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="searchInput" class="search-field" placeholder="Search keywords, Malayalam, Hindi...">
+              <button class="clear-search-btn" id="btnClearSearch">✕</button>
+            </div>
+
+            <!-- Temporal Filter Pills -->
+            <div class="filter-group">
+              <span class="filter-label">Time Frame:</span>
+              <div class="filter-pills" id="timeFilters">
+                <button class="filter-btn active" data-time="all">All Time</button>
+                <button class="filter-btn" data-time="2026">2026</button>
+                <button class="filter-btn" data-time="2025">2025</button>
+                <button class="filter-btn" data-time="month">This Month</button>
+              </div>
+            </div>
+
+            <!-- Keyword Tags Quick Filter -->
+            <div class="filter-group">
+              <span class="filter-label">Popular Tags:</span>
+              <div class="tag-filters">
+                <button class="tag-filter-btn" data-tag="milestone">#milestone</button>
+                <button class="tag-filter-btn" data-tag="nift">#nift</button>
+                <button class="tag-filter-btn" data-tag="firstcar">#firstcar</button>
+                <button class="tag-filter-btn" data-tag="celebration">#celebration</button>
+              </div>
+            </div>
+
+            <!-- Search Results Stream -->
+            <div class="search-results-stream" id="searchResultsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================================
+             SCREEN 6: VISION BOARD & INTENTIONAL MANIFESTATIONS
+             ======================================================== -->
+        <section class="app-screen screen-vision" id="screenVision">
+          <header class="app-topbar">
+            <button class="icon-btn" id="btnCloseVision">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </button>
+            <span class="topbar-title">✨ VISION ATELIER</span>
+            <button class="icon-btn gold-accent" id="btnAddManifestation" title="Add Manifestation">+</button>
+          </header>
+
+          <div class="vision-body">
+            <div class="vision-intro">
+              <p class="vision-quote">"Speak what you desire into quiet existence."</p>
+              <span class="vision-sub">Biometrically veiled for absolute privacy.</span>
+            </div>
+
+            <!-- Zomato-Style Whispers Simulation Box -->
+            <div class="whisper-banner-card">
+              <div class="whisper-header">
+                <span class="whisper-sparkle">🌙</span>
+                <span class="whisper-title">Conversational Whispers</span>
+                <button class="whisper-test-btn" id="btnCycleWhisper">Shuffle Nudge</button>
+              </div>
+              <p class="whisper-text" id="whisperText">
+                "Quick question before you sleep... did today look like the life you've been manifesting, or are we hitting reset tomorrow morning?"
+              </p>
+            </div>
+
+            <!-- Manifestation Cards List (Obfuscated by Default) -->
+            <div class="manifestations-list" id="manifestationsList">
+              <!-- Cards rendered here with secondary biometric gate -->
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================================
+             SCREEN 4: ATELIER SETTINGS & CRYPTOGRAPHIC VAULT
+             ======================================================== -->
+        <section class="app-screen screen-settings" id="screenSettings">
+          <header class="app-topbar">
+            <button class="icon-btn" id="btnCloseSettings">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </button>
+            <span class="topbar-title">ATELIER SETTINGS</span>
+            <div style="width: 32px;"></div>
+          </header>
+
+          <div class="settings-body">
+            
+            <div class="settings-section">
+              <h4 class="section-heading">🎨 AESTHETIC PALETTES</h4>
+              <div class="palette-swatches" id="paletteSwatches">
+                <button class="palette-swatch p-paper active" data-theme="theme-paper" title="Classic Paper">
+                  <span class="swatch-color" style="background: #FDFBF7; border: 1px solid #D6CEBE;"></span>
+                  <span class="swatch-name">Paper</span>
+                </button>
+                <button class="palette-swatch p-ink" data-theme="theme-ink" title="Diary / Ink Pen">
+                  <span class="swatch-color" style="background: #FFFDF9; border: 1px solid #1A2436;"></span>
+                  <span class="swatch-name">Ink Pen</span>
+                </button>
+                <button class="palette-swatch p-blossom" data-theme="theme-blossom" title="Blossom Rose">
+                  <span class="swatch-color" style="background: #FAF3F0; border: 1px solid #E4C8C5;"></span>
+                  <span class="swatch-name">Blossom</span>
+                </button>
+                <button class="palette-swatch p-forest" data-theme="theme-forest" title="Forest Sage">
+                  <span class="swatch-color" style="background: #F3F6F2; border: 1px solid #A8BBA3;"></span>
+                  <span class="swatch-name">Forest</span>
+                </button>
+                <button class="palette-swatch p-midnight" data-theme="theme-midnight" title="Midnight Noir">
+                  <span class="swatch-color" style="background: #141824; border: 1px solid #3A445D;"></span>
+                  <span class="swatch-name">Midnight</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h4 class="section-heading">🔐 VAULT SECURITY & RECOVERY</h4>
+              <div class="setting-row">
+                <div>
+                  <span class="setting-title">Change 4-Digit Passcode</span>
+                  <span class="setting-desc">Current default: 2428</span>
+                </div>
+                <button class="btn-secondary" id="btnChangePasscode">Change</button>
+              </div>
+              <div class="setting-row">
+                <div>
+                  <span class="setting-title">Passcode Memory Clue</span>
+                  <span class="setting-desc" id="settingHintDisplay">"First pet name"</span>
+                </div>
+                <button class="btn-secondary" id="btnEditHint">Edit</button>
+              </div>
+              <div class="setting-row">
+                <div>
+                  <span class="setting-title">Auto-Lock on Inactivity</span>
+                  <span class="setting-desc">Lock immediately when screen unfocuses</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="chkAutoLock" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h4 class="section-heading">📦 LOCAL-FIRST BACKUP & SOVEREIGNTY</h4>
+              <p class="section-subtext">All audio, photos, and handwritten reflections are stored 100% locally on this device using client-side encryption. Zero cloud tracking.</p>
+              <div class="backup-actions">
+                <button class="btn-primary-outline" id="btnExportBackup">📥 Export Encrypted Vault (.json)</button>
+                <button class="btn-primary-outline" id="btnImportBackup">📤 Restore from Backup</button>
+                <input type="file" id="fileImportBackup" accept=".json" style="display: none;">
+              </div>
+            </div>
+
+            <div class="settings-section danger-zone">
+              <h4 class="section-heading danger-text">⚠️ EMERGENCY RESET</h4>
+              <p class="section-subtext">Permanently purge all entries, manifestations, and passcode from this browser.</p>
+              <button class="btn-danger" id="btnPurgeAll">Erase Vault & Start Fresh</button>
+            </div>
+
+            <div class="settings-footer">
+              <span>Dear Diary v1.0.0</span>
+              <span>Design: Laya (BD-24-2834, NIFT Hyderabad)</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================================
+             BOTTOM FLOATING DOCK (VISIBLE ON HOME SCREEN)
+             ======================================================== -->
+        <nav class="home-floating-dock" id="homeFloatingDock">
+          <button class="dock-nav-item active" id="dockBtnHome" title="Home Sanctuary">
+            <span class="dock-icon-svg">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </span>
+            <span class="dock-text">Home</span>
+          </button>
+          
+          <button class="dock-nav-item center-record-action" id="dockBtnRecord" title="Start Today's Journal Entry">
+            <span class="dock-center-pulse"></span>
+            <span class="dock-center-mic">🎙️</span>
+          </button>
+
+          <button class="dock-nav-item" id="dockBtnVision" title="Vision Board & Manifestations">
+            <span class="dock-icon-svg">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </span>
+            <span class="dock-text">Vision</span>
+          </button>
+        </nav>
+
+      </main> <!-- End App Viewport -->
+    </div> <!-- End Phone Frame -->
+
+  </div> <!-- End Editorial Desk -->
+
+
+  <!-- ========================================================
+       MODAL: "TEAR A PAGE" KEEPSAKE LETTER (PRIVACY QUARANTINE)
+       ======================================================== -->
+  <div class="modal-backdrop" id="modalTearPage">
+    <div class="modal-card tear-letter-card">
+      
+      <div class="tear-letter-header">
+        <span class="tear-letter-brand">DEAR DIARY • KEEPSAKE POSTBOX</span>
+        <button class="modal-close-btn" id="btnCloseTearModal">✕</button>
+      </div>
+
+      <!-- Perforated Torn Top Edge -->
+      <div class="perforated-tear-edge"></div>
+
+      <!-- Kraft Paper Letter Sheet -->
+      <div class="kraft-letter-sheet" id="kraftLetterPreview">
+        <div class="letter-washi-tape"></div>
+        <div class="letter-date" id="letterDateLabel">Tuesday, 14 October 2026</div>
+        
+        <div class="letter-body">
+          <p class="letter-cursive-text" id="letterCursiveContent">
+            "ഇന്ന് കോളേജിൽ വച്ച് ജൂറി കഴിഞ്ഞു... It went well! I presented my latest fashion designs. Sending you this piece of my day ✨"
+          </p>
+        </div>
+
+        <div class="letter-footer-chin">
+          <span class="letter-signoff">written with love in Dear Diary</span>
+          <span class="letter-quarantine-badge">🔒 Quarantined Memory</span>
+        </div>
+      </div>
+
+      <!-- Privacy Quarantine Guarantee Banner -->
+      <div class="quarantine-notice">
+        <span class="shield-icon">🛡️</span>
+        <p><strong>Zero-Leakage Privacy Rule:</strong> Only this torn note will be exported. The rest of your private encrypted diary remains 100% locked.</p>
+      </div>
+
+      <!-- Keepsake Action Buttons -->
+      <div class="tear-actions">
+        <button class="btn-share-whatsapp" id="btnShareWhatsApp">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zM12.04 20.08c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.4 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.26-8.24 8.26zm4.52-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+          Share to WhatsApp / Insta
+        </button>
+        <button class="btn-share-letter-file" id="btnDownloadLetter">
+          💌 Save .letter Envelope
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       MODAL: CUSTOMIZE / ADD POLAROID PHOTO
+       ======================================================== -->
+  <div class="modal-backdrop" id="modalPolaroid">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">📷 Polaroid Memory Frame</h3>
+        <button class="modal-close-btn" id="btnClosePolaroidModal">✕</button>
+      </div>
+      <div class="modal-form">
+        <label>Upload or Select Snapshot:</label>
+        <div class="polaroid-sample-picker">
+          <button class="sample-photo-btn active" data-src="assets/editorial_showcase.jpg">NIFT Jury Studio</button>
+          <label class="sample-photo-btn upload-custom-label">
+            📁 Custom File
+            <input type="file" id="inputCustomPhoto" accept="image/*" style="display: none;">
+          </label>
+        </div>
+        <label style="margin-top: 12px;">Chin Caption (Handwritten):</label>
+        <input type="text" id="modalCaptionInput" class="text-input" placeholder="e.g. NIFT Jury Day ✨">
+        <div class="modal-actions">
+          <button class="btn-secondary" id="btnCancelPolaroid">Cancel</button>
+          <button class="btn-primary" id="btnApplyPolaroid">Pin to Canvas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       MODAL: "SOMETHING DIRECTLY FROM THE PAGE" (PHYSICAL SCRAP)
+       ======================================================== -->
+  <div class="modal-backdrop" id="modalScrap">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">📝 Something Directly from the Page</h3>
+        <button class="modal-close-btn" id="btnCloseScrapModal">✕</button>
+      </div>
+      <div class="modal-form">
+        <p class="modal-desc">Simulate a hand-torn scrap of real paper pinned with sage-green washi tape.</p>
+        <label>Handwritten Note / Quote / Doodle:</label>
+        <textarea id="modalScrapInput" class="text-textarea" rows="3">"Fabric weaves tell stories when words fail to breathe."</textarea>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="btnCancelScrap">Cancel</button>
+          <button class="btn-primary" id="btnApplyScrap">Pin Kraft Scrap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       MODAL: BIOMETRIC SIMULATION SCANNER
+       ======================================================== -->
+  <div class="modal-backdrop" id="modalBiometric">
+    <div class="biometric-modal-card">
+      <div class="bio-scanner-ring">
+        <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2a10 10 0 0 0-10 10c0 3.3 1.6 6.2 4.1 8"></path>
+          <path d="M12 6a6 6 0 0 0-6 6c0 2 1 3.8 2.5 4.9"></path>
+          <path d="M12 10a2 2 0 0 0-2 2c0 .7.3 1.3.8 1.7"></path>
+          <path d="M12 22a10 10 0 0 0 10-10c0-3.3-1.6-6.2-4.1-8"></path>
+          <path d="M12 18a6 6 0 0 0 6-6c0-2-1-3.8-2.5-4.9"></path>
+          <path d="M12 14a2 2 0 0 0 2-2c0-.7-.3-1.3-.8-1.7"></path>
+        </svg>
+      </div>
+      <h3 class="bio-title">Touch ID / Face ID</h3>
+      <p class="bio-subtitle" id="bioStatusText">Verifying biometric authentication...</p>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       TOAST NOTIFICATION TOUT
+       ======================================================== -->
+  <div class="toast-notification" id="toastNotification">
+    <span class="toast-icon">🔒</span>
+    <span class="toast-message" id="toastMessage">Vault safely encrypted</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

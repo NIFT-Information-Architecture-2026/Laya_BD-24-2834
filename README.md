@@ -31,7 +31,17 @@ Click below to explore each phase of our research, information architecture, and
 | **IA Method** | [CARD_SORTING.md](./CARD_SORTING.md) | 30-card hybrid sorting study, clustering matrix, and mental model analysis |
 | **Phase 4** | [PHASE_4_WIREFRAMES_FLOWS.md](./PHASE_4_WIREFRAMES_FLOWS.md) | Dynamic multi-page flows (1–5 pages) and low-fidelity screen wireframes |
 | **Phase 5** | [PHASE_5_DESIGN_SYSTEM.md](./PHASE_5_DESIGN_SYSTEM.md) | Locked themes, regional handwriting fonts, and discreet notification copy |
+| **Phase 6** | [PHASE_6_PROTOTYPE_DEPLOYMENT.md](./PHASE_6_PROTOTYPE_DEPLOYMENT.md) | Live interactive web prototype, Editorial Flat-Lay Desk, and deployment guide |
 | **Contract** | [instructions.md](./instructions.md) | Technical collaboration contract and Stage Gate Protocols |
+
+---
+
+## Running the Live Interactive App
+
+Simply open [`index.html`](./index.html) in any modern browser (Chrome, Edge, Safari, Firefox), or publish to GitHub Pages.
+
+- **Default Vault Passcode:** `2428` (or tap the **👆 Bio** button for instant biometric unlock).
+- **View Modes:** Toggle between **🍂 Editorial Desk** (full flat-lay showcase with hot chai & brass pen), **📱 Mobile Frame**, and **📖 Full Canvas** in the top navigation bar.
 
 ---
 
