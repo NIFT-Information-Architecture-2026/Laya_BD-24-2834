@@ -36,12 +36,19 @@ Click below to explore each phase of our research, information architecture, and
 
 ---
 
+## 🌐 Live Usable Website Link
+
+👉 **[Launch Dear Diary Live App](https://nift-information-architecture-2026.github.io/Laya_BD-24-2834/)**  
+`https://nift-information-architecture-2026.github.io/Laya_BD-24-2834/`
+
+- **Passcode:** `2428` (or click **👆 Bio** for instant biometric unlock)
+- **View Modes:** Toggle between **🍂 Editorial Desk**, **📱 Mobile Frame**, and **📖 Full Canvas** in the top navigation bar.
+
+---
+
 ## Running the Live Interactive App
 
-Simply open [`index.html`](./index.html) in any modern browser (Chrome, Edge, Safari, Firefox), or publish to GitHub Pages.
-
-- **Default Vault Passcode:** `2428` (or tap the **👆 Bio** button for instant biometric unlock).
-- **View Modes:** Toggle between **🍂 Editorial Desk** (full flat-lay showcase with hot chai & brass pen), **📱 Mobile Frame**, and **📖 Full Canvas** in the top navigation bar.
+Open [`index.html`](./index.html) locally in any modern browser, or visit the live deployment at [https://nift-information-architecture-2026.github.io/Laya_BD-24-2834/](https://nift-information-architecture-2026.github.io/Laya_BD-24-2834/).
 
 ---
 
