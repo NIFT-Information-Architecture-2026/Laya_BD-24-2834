@@ -27,7 +27,8 @@ Click below to explore each phase of our research, information architecture, and
 | **Specification** | [DEAR_DIARY_SPEC.md](./DEAR_DIARY_SPEC.md) | Master architectural blueprint, security model, and feature matrix |
 | **Phase 1** | [PHASE_1_NARRATIVE_OBJECTIVES.md](./PHASE_1_NARRATIVE_OBJECTIVES.md) | Narrative, problem statement, competitive audit, and ethical manifesto |
 | **Phase 2** | [PHASE_2_UX_EMPATHY.md](./PHASE_2_UX_EMPATHY.md) | Persona, late-night empathy mapping, and Mirror-Script protocol |
-| **Phase 3** | [PHASE_3_IA_TAXONOMY.md](./PHASE_3_IA_TAXONOMY.md) | Global sitemap, entry data taxonomy, and multi-tier episodic search |
+| **Phase 3 (IA)** | [PHASE_3_IA_TAXONOMY.md](./PHASE_3_IA_TAXONOMY.md) | Global sitemap, entry data taxonomy, and multi-tier episodic search |
+| **IA Method** | [CARD_SORTING.md](./CARD_SORTING.md) | 30-card hybrid sorting study, clustering matrix, and mental model analysis |
 | **Phase 4** | [PHASE_4_WIREFRAMES_FLOWS.md](./PHASE_4_WIREFRAMES_FLOWS.md) | Dynamic multi-page flows (1–5 pages) and low-fidelity screen wireframes |
 | **Phase 5** | [PHASE_5_DESIGN_SYSTEM.md](./PHASE_5_DESIGN_SYSTEM.md) | Locked themes, regional handwriting fonts, and discreet notification copy |
 | **Contract** | [instructions.md](./instructions.md) | Technical collaboration contract and Stage Gate Protocols |
